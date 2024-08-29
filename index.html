@@ -77,20 +77,18 @@
                     li.className = 'bg-gray-100 p-4 rounded-md hover:bg-gray-200 transition duration-300';
                     const a = document.createElement('a');
                     a.href = record.link;
-                    a.className = 'block';
+                    a.className = 'text-indigo-600 hover:text-indigo-800 font-medium block mb-2';
                     a.target = '_blank';
-                    
-                    const title = document.createElement('div');
-                    title.textContent = record.displayName;
-                    title.className = 'text-indigo-600 hover:text-indigo-800 font-medium text-lg mb-1';
-                    
-                    const description = document.createElement('div');
-                    description.textContent = record.description;
-                    description.className = 'text-gray-600 text-sm';
-                    
-                    a.appendChild(title);
-                    a.appendChild(description);
+                    a.textContent = record.displayName;
                     li.appendChild(a);
+                    
+                    if (record.description) {
+                        const p = document.createElement('p');
+                        p.className = 'text-sm text-gray-600';
+                        p.textContent = record.description;
+                        li.appendChild(p);
+                    }
+                    
                     recordsList.appendChild(li);
                 });
                 recordsContainer.classList.remove('hidden');
